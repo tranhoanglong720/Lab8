@@ -26,34 +26,36 @@ public class frmDangKy extends AppCompatActivity {
     Button btndn;
     EditText edtemail,edtpass,edtname,edtpass2;
 
-   // private FirebaseAuth mAuth;
+    private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_frm_dang_ky);
-      //  mAuth = FirebaseAuth.getInstance();
+       mAuth = FirebaseAuth.getInstance();
         Find();
         btndn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String name=edtname.getText().toString().trim();
-                String email=edtemail.getText().toString().trim();
-                String pass=edtpass.getText().toString().trim();
-                String pass2=edtpass2.getText().toString().trim();
-                int normal=0;
-                int happy=0;
-                int unhappy=0;
-                User user=new User(name,email,pass,pass2,normal,happy,unhappy);
-               AddUser(user);
+
+                SignIn();
+
 
             }
         });
     }
 
-    private void AddUser(User user){
+    private void AddUser(){
+        String name=edtname.getText().toString().trim();
+        String email=edtemail.getText().toString().trim();
+        String pass=edtpass.getText().toString().trim();
+        String pass2=edtpass2.getText().toString().trim();
+        int normal=0;
+        int happy=0;
+        int unhappy=0;
+        User user=new User(name,email,pass,pass2,normal,happy,unhappy);
         FirebaseDatabase database=FirebaseDatabase.getInstance();
         DatabaseReference mRef=database.getReference("ListUser");
-        String  pathObject=String.valueOf(user.getEmail());
+        String  pathObject=FirebaseAuth.getInstance().getCurrentUser().getUid();
         mRef.child(pathObject).setValue(user, new DatabaseReference.CompletionListener() {
             @Override
             public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
@@ -68,30 +70,28 @@ public class frmDangKy extends AppCompatActivity {
         edtpass2=findViewById(R.id.editpass2dk);
         edtname=findViewById(R.id.edittendk);
     }
-   /* private  void SignIn()
+    private  void SignIn()
     {
 
         final Intent intentface=new Intent(this,frmFace.class);
         String Email=edtemail.getText().toString();
         String Pass=edtpass.getText().toString();
-        String Name=edtname.getText().toString();
         mAuth.createUserWithEmailAndPassword(Email, Pass)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "createUserWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
+                            AddUser();
+                            //FirebaseUser user = mAuth.getCurrentUser();
                             //updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
-                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
                             Toast.makeText(frmDangKy.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
 
                         }
                     }
                 });
-    }*/
+    }
 }
