@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/Lab8/app/src/main/res/layout/activity_frm_dang_ky.xml" value="0.25" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/Lab8/app/src/main/res/layout/activity_frm_dang_nhap.xml" value="0.25" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/Lab8/app/src/main/res/layout/activity_frm_face.xml" value="0.25" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/Lab8/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/COMPUTER/AndroidStudioProjects/Lab81/app/src/main/res/layout/activity_frm_dang_ky.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/COMPUTER/AndroidStudioProjects/Lab81/app/src/main/res/layout/activity_frm_dang_nhap.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/COMPUTER/AndroidStudioProjects/Lab81/app/src/main/res/layout/activity_frm_face.xml" value="0.35260416666666666" />
